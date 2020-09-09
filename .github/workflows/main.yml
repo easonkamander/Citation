@@ -3,18 +3,16 @@ name: main
 on: [push]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: deploy to server
-      uses: easingthemes/ssh-deploy@v2.1.1
-      env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: "-rzv --delete"
-          SOURCE: "main/"
-          REMOTE_HOST: "easonkamander.com"
-          REMOTE_USER: "eason"
-          TARGET: "/var/www/citation/main"
+	build:
+		runs-on: ubuntu-latest
+		steps:
+		- uses: actions/checkout@v1
+		- name: deploy to server
+			uses: easingthemes/ssh-deploy@v2.1.1
+			env:
+					SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+					ARGS: "-rzv"
+					SOURCE: "main/"
+					REMOTE_HOST: "easonkamander.com"
+					REMOTE_USER: "eason"
+					TARGET: "/var/www/citation/main"
