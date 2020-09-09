@@ -1,14 +1,20 @@
-name: CI
+name: main
 
-on:
-  push:
-    branches: [ master ]
+on: [push]
 
 jobs:
-  main:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Main
-        run: |
-          git push easonkamander.com:/var/www/citation/main.git master
+    - uses: actions/checkout@v1
+    - name: deploy to server
+      uses: easingthemes/ssh-deploy@v2.1.1
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: "easonkamander.com"
+          REMOTE_USER: "eason"
+          TARGET: "/var/www/citation"
