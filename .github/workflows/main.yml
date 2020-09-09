@@ -9,5 +9,6 @@ jobs:
     runs-on: debian-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Main
         run: |
           git push easonkamander.com:/var/www/citation/main.git master
