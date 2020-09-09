@@ -14,7 +14,7 @@ jobs:
       env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rzv --delete"
-          SOURCE: "."
+          SOURCE: "main/"
           REMOTE_HOST: "easonkamander.com"
           REMOTE_USER: "eason"
           TARGET: "/var/www/citation"
