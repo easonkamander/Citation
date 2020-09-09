@@ -17,4 +17,4 @@ jobs:
           SOURCE: "main/"
           REMOTE_HOST: "easonkamander.com"
           REMOTE_USER: "eason"
-          TARGET: "/var/www/citation"
+          TARGET: "/var/www/citation/main"
