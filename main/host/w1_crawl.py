@@ -7,12 +7,12 @@ import re
 
 first = lambda xs: functools.reduce(lambda x, y: x or y, xs, False)
 
-def parseFromURL(url):
+def crawl(url):
         page = requests.get(url)
         return BeautifulSoup(page.text, 'lxml')
 
 url = sys.argv[1]
-soup = parseFromURL(url)
+soup = crawl(url)
 matchMeta = re.compile('author')
 author = [soup.find('meta', attrs={'name':matchMeta})]
 matchAuthor = re.compile('author.*byline|byline.*author|author-name|authorName', re.IGNORECASE)

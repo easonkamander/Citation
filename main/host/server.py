@@ -20,7 +20,7 @@ skt = socketio.Server(async_mode='gevent_uwsgi')
 app = socketio.WSGIApp(skt, web, socketio_path='/auth/ws/')
 
 @web.route('/auth/') # Redirect To Google Auth
-def auth ():
+def auth():
 	auth_send_flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
 		client_secrets_file='secrets/oauth.json',
 		redirect_uri=flask.url_for('auth_cb', _external=True),
@@ -30,7 +30,7 @@ def auth ():
 	return flask.redirect(auth_send_redirect_url)
 
 @web.route('/auth/cb/') # Callback From Google Auth
-def auth_cb ():
+def auth_cb():
 	if 'nonce' in flask.session:
 		auth_recv_flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
 			client_secrets_file='secrets/oauth.json',
@@ -60,15 +60,15 @@ def auth_cb ():
 	return flask.redirect('/')
 
 @web.route('/auth/rm/') # Clear Session
-def auth_rm ():
+def auth_rm():
 	flask.session.pop('user')
 	return flask.redirect('/')
 
 @skt.on('connect') # Connect To Websocket And Get Session Credentials
-def skt_connect (sid, context):
+def skt_connect(sid, context):
 	with web.request_context(context):
 		skt.save_session(sid, {'user': flask.session['user'] if 'user' in flask.session else None})
 
 @skt.on('custom_event') # Handle Websocket Events TODO
-def skt_question (sid):
+def skt_question(sid):
 	print(skt.get_session(sid)['user'])
