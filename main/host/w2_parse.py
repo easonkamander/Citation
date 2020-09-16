@@ -32,6 +32,7 @@ def parse(url, file):
 		# tag names of self or any children don't include canvas, iframe, img, style, script, video
 		# offsetHeight
 		# offsetTop
+		# TODO font size and styling
 
 # Array.from(document.body.querySelectorAll('*')).filter(i =>
 # 	i.innerText &&
