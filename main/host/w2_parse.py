@@ -33,20 +33,3 @@ def parse(url, file):
 		# offsetHeight
 		# offsetTop
 		# TODO font size and styling
-
-# Array.from(document.body.querySelectorAll('*')).filter(i =>
-# 	i.innerText &&
-# 	i.childNodes[0].nodeValue &&
-# 	i.children.length < 5 &&
-# 	i.querySelectorAll('*').length < 10 &&
-# 	i.querySelectorAll('canvas,iframe,img,style,script').length == 0 &&
-# 	i.getBoundingClientRect().width > 16 &&
-# 	i.getBoundingClientRect().width < 800 &&
-# 	i.getBoundingClientRect().height > 8 &&
-# 	i.getBoundingClientRect().height < 100 &&
-# 	i.getBoundingClientRect().top > 0 &&
-# 	i.getBoundingClientRect().top < 2000 &&
-# 	i.getBoundingClientRect().bottom > 0 &&
-# 	i.getBoundingClientRect().left > 0 &&
-# 	i.getBoundingClientRect().right > 0
-# )
